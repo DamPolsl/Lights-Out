@@ -1,0 +1,257 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: radial-gradient(#24243e,#302b63,#0f0c29);
+    color: #eed85b;
+    font-size: 1.4rem;
+    height: 100vh;
+}
+
+#prompt{
+    position: fixed;
+	top:0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+	height: 100vh;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(5px);
+	text-shadow: 1px 1px 1px black;
+	font-size: 6rem;
+	text-align: center;
+	user-select: none;
+}
+
+#game{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#board{
+    max-width: 600px;
+    max-height: 600px;
+    width: 100vw;
+    height: 100vw;
+    box-shadow: 0 0 .3em rgba(0, 0, 0, 0.6);
+}
+
+#board > .row{
+    height: calc(100%/6);
+}
+
+.tile{
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background: rgb(78, 78, 78);
+    transition: background ease-in-out .2s;
+    color:#fff;
+    text-shadow: 1px 1px 1px black,
+	-1px -1px 1px black,
+	-1px 1px 1px black,
+	1px -1px 1px black;
+    font-size: 2rem;
+    font-weight: 700;
+    user-select: none;
+}
+
+.tile:hover{
+    cursor: pointer;
+}
+
+.tile:before {
+    display: block;
+    background-color:rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    content: "";
+    position: absolute;
+    transition: background-color ease-in-out .3s;
+}
+
+.tile:hover:before{
+    background-color:rgba(0, 0, 0, 0.3);
+    transition: background-color ease-in-out .3s;
+}
+
+.tile > * {
+    position: relative;
+}
+
+/* SIDE PANEL */
+
+.gameButton{
+    font-size: 1.4rem;
+    padding: 0.1em;
+    margin: 0.1em;
+    box-shadow: .1em .1em .1em rgba(0, 0, 0, 0.4);
+	background: hsla(0, 0%, 0%, 0.1);
+	color: #fff;
+	text-shadow: 1px 1px black,
+	-1px -1px black,
+	-1px 1px black,
+	1px -1px black;
+}
+
+.gameButton:hover{
+    cursor: pointer;
+}
+
+#panel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	margin-left: .2em;
+}
+
+.shape{
+    height: 20vw;
+    width: 20vw;
+    max-width: 150px;
+    max-height: 150px;
+    border: 1px solid black;
+    margin: 0.15em;
+    box-shadow: .1em .1em .1em rgba(0, 0, 0, 0.4);
+}
+
+.shape:hover{
+    cursor: pointer;
+}
+
+.shape > .row{
+    height: calc(100%/3);
+}
+
+.shape > .row > .tile-small{
+    width: calc(100%/3);
+    transition: border ease-in-out .2s;
+    transition: background ease-in-out .2s;
+}
+
+.shape > .row > .tile-small.filled{
+    border: 1px solid rgb(97, 97, 97);
+}
+
+.selected > .row > .tile-small.filled{
+    border: 1px solid rgb(31, 31, 31);
+}
+
+/* GENERAL CLASSES */
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty{
+    background: none;
+}
+
+.filled{
+    background: rgb(116, 116, 116);
+}
+
+.selected{
+    border: 5px solid red !important;
+}
+
+.hidden{
+	opacity: 0;
+    display: none !important; 
+}
+
+.visible{
+	opacity: 1;
+    display: flex !important; 
+}
+
+.selected > .row > .filled{
+    background: rgb(206, 216, 112);
+}
+
+/* RWD */
+
+@media screen and (max-width: 768px) and (orientation: portrait){
+    #game{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #board{
+        width: 95vw;
+        height: 95vw;
+    }
+    #panel{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+		margin-left: 0;
+    }
+    #shapes{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape){
+    #board{
+        width: 90vh;
+        height: 90vh;
+    }
+    .shape{
+        height: 25vh;
+        width: 25vh;
+    }
+    #game{
+        flex-direction: row;
+    }
+    #panel{
+        flex-direction: column;
+    }
+    #shapes{
+        flex-direction: column;
+    }
+	#prompt{
+		font-size: 4rem;
+	}
+}
+
+@media screen and (max-width: 480px){
+    #panel{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .shape{
+        height: 25vw;
+        width: 25vw;
+        max-width: 150px;
+        max-height: 150px;
+        border: 1px solid black;
+        margin: 0.2em 0.1em;
+    }
+	#prompt{
+		font-size: 2.5rem;
+	}
+}

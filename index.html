@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>Light out</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="game">
+            <div id="board">
+                
+            </div>
+            <div id="panel">
+                <div id="shapes">
+                    <div class="shape" onclick="changeShape(0)">
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                    </div>
+                    <div class="shape" onclick="changeShape(1)">
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                    </div>
+                    <div class="shape" onclick="changeShape(2)">
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                        <div class="row">
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                            <div class="tile-small"></div>
+                        </div>
+                    </div>
+                </div>
+                <button id="solutionButton" class="gameButton">
+                    Rozwiązanie
+                </button>
+            </div>
+        </div>
+        <div id="prompt" class="hidden">
+            WYGRANA!
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
